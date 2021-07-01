@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.js" integrity="sha512-liPvfWpzKp7bXBAK05m+Uqrv5ATN4kCeUh64IygMoo98oEcTELOrymzU8omW2mEZszHHJ+qPOSkEzJLs2QqwQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script src="https://github.com/eKoopmans/html2pdf.js/blob/master/dist/html2pdf.bundle.min.js"></script> -->
+    <title>ID Card</title>
+<style>
+
+
+
+
+
+.font{
+    height: 375px;
+    width: 250px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.top{
+    height: 30%;
+    width: 100%;
+    background-color: #e78e28da;
+    border: 1px solid black;
+    position: relative;
+    z-index: 5;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.bottom{
+    height: 70%;
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+    position: absolute;
+    background-size: cover;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: 15px ;
+    border-bottom-right-radius: 15px;
+    font-size: 16px; 
+    color: rgb(8, 8, 8);
+    text-align: center;
+}
+
+#image{
+    height: 100px;
+    width: 100px;
+    background-color: #e6ebe0;
+    border-radius: 10px;
+    position: absolute;
+    top:60px;
+    left: 75px;
+}
+
+.bottom div{
+    position: relative;
+    top: 60px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    text-emphasis: spacing;
+}
+
+.padding{
+    padding-right: 20px;
+    padding: 100px;
+    margin-right: 20px;
+    align-content: center;
+}
+.visible{
+    visibility: 0;
+    opacity: 0;
+}
+
+.sty{
+    margin-top: 20px;
+}
+
+.sty div {
+    margin: 10px;
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+    
+<div class="container" style="margin-top: 20px;">
+    <div style="font-size: x-large; text-align: center; font-weight: 800; border:2px solid black;"> ID Card Form </div>
+    <div>
+    <div class="padding sty">
+        <div style="font-weight: 700;" > क्रम संख्या : <input type="text" placeholder=" क्रम संख्या " id="Serial"></div>
+        <div style="font-weight: 700;" > नाम : <input type="text" placeholder=" नाम "  id="Name"></div>
+        <div style="font-weight: 700;" > पद : <input type="text" placeholder=" पद " id="Desi"></div>
+        <div style="font-weight: 700;" > मो : <input type="number"  placeholder=" XXXXXXXXXX " id="Number"></div>
+        <div style="font-weight: 700;" > पता : <input type="text" placeholder=" पता " name="" id="Add"></div>
+        <div style="font-weight: 700;" > परिवार में सदस्यों की संख्या : <input type="number" placeholder="XX" id="Count"></div>
+        
+        <div class="input-group mb-3" style="font-weight: 700;">
+            फोटो :
+            <div class="custom-file" style="margin:0;margin-left: 20px;">
+              <input type="file" class="custom-file-input" id="Image">
+              <label class="custom-file-label" for="Image"></label>
+            </div>
+            
+        </div>
+
+        <button class="btn btn-outline-primary" type="submit" id="submit">Submit</button>
+        <button class="btn btn-outline-danger" type="reset">Reset</button>
+        <button class="btn btn-outline-info" type="preview" id="preview" >Preview</button>
+    </div>
+    </div>
+        <div class="padding" id="Card" >
+            <div class="font">
+                <div class="top">
+                    <div class="Header_title" style="text-align: center; font-size: medium; font-weight: 800;margin-top: 15px;">गया जिला केसरवानी वैश्य सभा<br><div style="font-size:small;">गया ( बिहार )</div></div>
+                    <div>
+                        <p style="font-size: 13px; margin-left:10px;font-weight: 700;margin-top: 10px;" >क्रम संख्या : 
+                            <img src="img/qr1.png" alt="loading" style="height: 35px; margin-left: 20px; float: right; margin-right: 20px; border: 1px solid black;" class=""><br>
+                            <strong> 123456 </strong> 
+                        </p>
+                        
+                    </div> 
+                    <img id="image" src="img/download.png" style="border: 1px solid black;">
+                </div>
+            
+
+                <div class="bottom" >
+                    <div style="font-weight: 700;font-size: 15px;" id="name">Shubham </div>
+                    <div style="font-size: 13px; font-weight: 700;"id="desi"> Creator</div>
+                    <div style="text-align: left;padding: 0; font-size: 13px; font-weight: 500;margin: 5px;margin-left: 20px;" id="number"> <strong>मो : </strong> <mob>9090909090</mob> </div>
+                    <div style="text-align: left;padding:0; font-size: 13px; font-weight: 500;margin: 5px; margin-left: 20px;" id="add"> <strong> पता : </strong><add>patta</add> </div>
+                    <div style="text-align: left;font-size: 13px; font-weight: 500;margin: 5px; margin-left: 20px;margin-top: 0px; margin-bottom: 0px;" id="count"><strong> परिवार में सदस्यों की संख्या : </strong> <count>12</count> </div>
+                    
+                    <div style="font-weight: 800; font-size: 13px; margin-left:15px;margin-right:15px;margin-bottom: -18px; " > 
+                        <img src="img/rm.png" alt="Snow" style="width: 80px;">&emsp;&emsp;&emsp;
+                        <img src="img/ram.png" alt="Snow" style="width: 80px;">
+                    </div>
+                        <div style="font-weight: 800; font-size: 13px; margin-left: 15px;margin-right:15px; margin-top: 0;" > 
+                            रामेश्वर प्रसाद &emsp;&emsp;&emsp;&emsp;रामजी प्रा. केसरी <br>
+                            मुख्य सचिव &emsp;&emsp;&emsp;&emsp;&emsp;संगठन मंत्री&emsp; 
+                       </div>
+                    
+                    
+                </div>
+            </div>
+        </div>          
+</div>
+
+    <script>
+        var prev = document.querySelector("#preview");
+        prev.addEventListener("click",function(){
+            /// show the card ///
+            document.querySelector("#Card").classList.toggle("visible");
+
+            /// add the name and other things ///
+            var serial = document.querySelector("#Serial").value;
+            document.querySelector("strong").innerHTML = serial;
+            var name = document.querySelector("#Name").value;
+            document.querySelector("#name").innerHTML=name;
+            var desi = document.querySelector("#Desi").value;
+            document.querySelector("#desi").innerHTML=desi;
+            var mob = document.querySelector("#Number").value;
+            document.querySelector("mob").innerHTML = mob;
+            var add = document.querySelector("#Add").value;
+            document.querySelector("add").innerHTML = add;
+            var count = document.querySelector("#Count").value;
+            document.querySelector("count").innerHTML = count;
+
+        });
+
+        
+        
+            var image = document.querySelector("#Image");
+            console.log(image);
+        
+            image.addEventListener("change",function(){
+            var file = this.files[0];
+                if(file){
+                    var reader = new FileReader();
+                    reader.addEventListener("load",function(){
+                        document.querySelector("#image").setAttribute("src",this.result);
+                    });
+                }
+                reader.readAsDataURL(file);
+            });
+        
+        //console.log(card);
+        
+        var sub = document.querySelector("#submit"); 
+        console.log("Hello");
+        sub.addEventListener("click",()=>{
+            var card = document.getElementById("Card");
+            var name = document.querySelector("#Name");
+            console.log("Here we are");
+            var opt = {
+                margin:       1,
+                filename:     'abc.pdf',
+                image:        { type:'jpg', quality:0.98 },
+                html2canvas: {dpi:192, letterRendering:true, useCORS:true},
+                jsPDF:        { unit:'in', format:'letter', orientation:'portrait' }
+            };
+            // card.classList.remove("visible");
+            html2pdf().from(card).set(opt).save();
+        });
+        
+            
+        
+
+    </script>
+
+</body>
+</html>
